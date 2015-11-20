@@ -1,5 +1,5 @@
 body {
-    font-family: "Lucida Console", Monaco, monospace;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin-left: 10%;
     margin-right: 30%;
 }
@@ -34,10 +34,13 @@ header.head a:visited {
 
 header.head a:hover,
 header.head a:active {
-    background-color: lime; 
+    background-color: #0099FF; 
 }
-
 
 table.beginsection {
     width: 100%;
+}
+
+table {
+    border-spacing: 20px 0;
 }
