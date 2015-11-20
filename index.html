@@ -13,7 +13,7 @@ function drawChart() {
   dataTable.addColumn({ type: 'string', id: 'Name' });
   dataTable.addColumn({ type: 'date', id: 'Start' });
   dataTable.addColumn({ type: 'date', id: 'End' });
-  dataTable.addRows([['bact-shala war', 'border conflict', new Date(302, 9, 10), new Date(307, 9, 20)],['keldum war', 'border conflict', new Date(302, 9, 10), new Date(307, 9, 20)],['bact-shala war', 'big conflict', new Date(302, 5, 08), new Date(320, 0, 02)],['sholtercrest war', 'big conflict', new Date(302, 5, 08), new Date(320, 0, 02)]]);
+  dataTable.addRows([['greater sholtercrest government', 'reign of king byron iv', new Date(35, 9, 23), new Date(73, 11, 16)],['bact-shala war', 'border conflict', new Date(302, 9, 10), new Date(307, 9, 20)],['keldum war', 'border conflict', new Date(302, 9, 10), new Date(307, 9, 20)],['bact-shala war', 'big conflict', new Date(302, 5, 08), new Date(320, 0, 02)],['sholtercrest war', 'big conflict', new Date(302, 5, 08), new Date(320, 0, 02)]]);
 
   chart.draw(dataTable);
   google.visualization.events.addListener(chart, "select", goEvent);
@@ -21,7 +21,7 @@ function drawChart() {
 }
 
 function goEvent() {
-  linklist = ['events/war1.html', 'events/war1.html', 'events/war2.html', 'events/war2.html', 'events/war2.html', 'events/war2.html'];
+  linklist = ['events/reign-byron-iv.html', 'events/war1.html', 'events/war1.html', 'events/war1.html', 'events/war2.html', 'events/war2.html', 'events/war2.html', 'events/war2.html', 'events/war2.html'];
   var selection = window.chart.getSelection();
   link = linklist[selection[0].row];
   window.location.href = link;
