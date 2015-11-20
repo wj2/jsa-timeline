@@ -13,7 +13,9 @@ Timelines, in turn, have events.
 #### Events ####
 Events are derived from text files with, at minimum, parameters give alone
 on a line in the form:
-    %% <param>: <value>
+
+    %% \<param\>: \<value\>
+
 Necessary parameters are:
 * Name -- name of the event, shown on the timeline and as the title of the event
   page.
@@ -22,7 +24,7 @@ Necessary parameters are:
 * Nations -- comma delimited list of nations involved in the event, typically 
   it is a single nation except in the case of War type events -- for which all 
   belligerents should be listed.
-* Start -- start date of the event, given as <month> <day>, <year>. The year 
+* Start -- start date of the event, given as \<month\> \<day\>, \<year\>. The year 
   should be in PR (TODO: change to allow to specify dating scheme)
 * End -- same as Start for the end of the event
 Optional parameters:
