@@ -29,11 +29,13 @@ def convert_date(date):
         month = month - 1
     except ValueError:
         month = months[month]
-    print month, date, year
     return month, date, year
 
 def make_js_date(month, date, year):
-    date = 'new Date({}, {}, {})'.format(year, month, date)
+    date = 'goodDate({}, {}, {})'.format(year, 
+                                         month, 
+                                         date,
+                                         year)
     return date
     
 def make_event_date(date):
@@ -47,12 +49,12 @@ def make_event_date(date):
 
 class Event(object):
 
-    def __init__(self, path, headersymbol='#'):
+    def __init__(self, path, headersymbol='%%'):
         f = open(path, 'rb')
         descript = ''
         for i, line in enumerate(f.readlines()):
-            if line[0] == headersymbol:
-                param, val = split_and_strip(line[1:], ':')
+            if line[:len(headersymbol)] == headersymbol:
+                param, val = split_and_strip(line[len(headersymbol):], ':')
                 setattr(self, param.lower().strip('\n'), 
                         val.lower().strip('\n'))
             else:
@@ -94,13 +96,14 @@ class Event(object):
         ed = convert_date(self.end)
         js_end = make_js_date(*ed)
         for c in categs:
+            # entr = entr_ev.format(c, self.name, js_start, js_end)
             entr = entr_ev.format(c, self.name, js_start, js_end)
             entries.append(entr)
         return entries
         
 class Timeline(object):
 
-    def __init__(self, source_folder, eventpatt='.*\.md$', html_name='index'):
+    def __init__(self, source_folder, eventpatt='.*\.txt$', html_name='index'):
         event_files = os.listdir(source_folder)
         event_files = filter(lambda x: re.match(eventpatt, x) is not None, 
                              event_files)

@@ -13,11 +13,17 @@ function drawChart() {
   dataTable.addColumn({ type: 'string', id: 'Name' });
   dataTable.addColumn({ type: 'date', id: 'Start' });
   dataTable.addColumn({ type: 'date', id: 'End' });
-  dataTable.addRows([['greater sholtercrest government', 'reign of king byron iv', new Date(35, 9, 23), new Date(73, 11, 16)],['bact-shala war', 'border conflict', new Date(302, 9, 10), new Date(307, 9, 20)],['keldum war', 'border conflict', new Date(302, 9, 10), new Date(307, 9, 20)],['bact-shala war', 'big conflict', new Date(302, 5, 08), new Date(320, 0, 02)],['sholtercrest war', 'big conflict', new Date(302, 5, 08), new Date(320, 0, 02)]]);
+  dataTable.addRows([['greater sholtercrest government', 'reign of king byron iv', goodDate(125, 9, 23), goodDate(173, 11, 16)],['bact-shala war', 'border conflict', goodDate(302, 9, 10), goodDate(307, 9, 20)],['keldum war', 'border conflict', goodDate(302, 9, 10), goodDate(307, 9, 20)],['bact-shala war', 'big conflict', goodDate(302, 5, 08), goodDate(320, 0, 02)],['sholtercrest war', 'big conflict', goodDate(302, 5, 08), goodDate(320, 0, 02)]]);
 
   chart.draw(dataTable);
   google.visualization.events.addListener(chart, "select", goEvent);
   window.chart = chart;
+}
+
+function goodDate(year, month, day) {
+  var d = new Date(year, month, day);
+  d.setFullYear(year);
+  return d
 }
 
 function goEvent() {
