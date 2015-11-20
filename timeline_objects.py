@@ -6,6 +6,10 @@ from string import Template
 
 tt_path = 'timeline_template.html'
 timeline_template = Template(open(tt_path, 'rb').read())
+
+ed_path = 'event_display_template.html'
+event_display_template = Template(open(ed_path, 'rb').read())
+
 month_names = ['coleve', 'snowreap', 'wintersebb', 'morningthaw', 'solclaim',
                'feedsow', 'leafdawning', 'verdanture', 'thistledown', 
                'harvestgain', 'leaffall', 'frostfall']
@@ -50,11 +54,11 @@ class Event(object):
         self.html_path = loc + '.html'
 
     def get_html(self):
-        rae_ev = ('#{}\n'
-                  '*type:* {}\n'
-                  '*nations:* {}\n'
-                  '*start:* {}\n'
-                  '*end:* {}\n'
+        rae_ev = ('##{}\n'
+                  '|**type:** {}|\n'
+                  '|**nations:** {}|\n'
+                  '|**start:** {}|\n'
+                  '|**end:** {}|\n'
                   '\n'
                   '{}\n')
         full_ev = rae_ev.format(self.name,
@@ -64,7 +68,8 @@ class Event(object):
                                 self.end, 
                                 self.description)
         html_ev = mkd.markdown(full_ev)
-        return html_ev
+        full_html = event_display_template.substitute(event=html_ev)
+        return full_html
 
     def save_html(self, path=None):
         if path is not None:
