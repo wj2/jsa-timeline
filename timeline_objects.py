@@ -55,6 +55,7 @@ class Event(object):
 
     def get_html(self):
         rae_ev = ('##{}\n'
+                  '---|---|---'
                   '|**type:** {}|\n'
                   '|**nations:** {}|\n'
                   '|**start:** {}|\n'
