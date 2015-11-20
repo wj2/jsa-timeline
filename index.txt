@@ -1,0 +1,8 @@
+%% Name: Timeline of Jimsanus
+%% Type: History
+%% Nations: Many
+%% Start: 1 1, -1000000
+%% End: 1 1, 1000
+%% Timeline: events
+
+Jimsanus is a pretty shitty place.

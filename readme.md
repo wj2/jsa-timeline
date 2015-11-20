@@ -27,6 +27,7 @@ Necessary parameters are:
 * Start -- start date of the event, given as \<month\> \<day\>, \<year\>. The year 
   should be in PR (TODO: change to allow to specify dating scheme)
 * End -- same as Start for the end of the event
+
 Optional parameters:
 * Timeline -- a folder with events from which to generate a timeline, that will 
   be displayed at the top of this event page
