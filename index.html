@@ -21,7 +21,7 @@ function drawChart() {
   dataTable.addColumn({ type: 'string', id: 'Name' });
   dataTable.addColumn({ type: 'date', id: 'Start' });
   dataTable.addColumn({ type: 'date', id: 'End' });
-  dataTable.addRows([['greater sholtercrest government', 'reign of king byron iv', goodDate(1035, 9, 23), goodDate(1073, 11, 16)],['greater sholtercrest government', 'reign of king byron iii', goodDate(998, 0, 5), goodDate(1035, 9, 22)],['bact-shala war', 'border conflict', goodDate(302, 9, 10), goodDate(307, 9, 20)],['keldum war', 'border conflict', goodDate(302, 9, 10), goodDate(307, 9, 20)],['bact-shala war', 'big conflict', goodDate(302, 5, 08), goodDate(320, 0, 02)],['sholtercrest war', 'big conflict', goodDate(302, 5, 08), goodDate(320, 0, 02)]]);
+  dataTable.addRows([['greater sholtercrest government', 'reign of king byron iv', goodDate(1035, 9, 23), goodDate(1073, 11, 16)],['greater sholtercrest government', 'reign of king byron iii', goodDate(998, 0, 5), goodDate(1035, 9, 22)],['bact-shala war', 'border conflict', goodDate(1302, 9, 10), goodDate(1307, 9, 20)],['keldum war', 'border conflict', goodDate(1302, 9, 10), goodDate(1307, 9, 20)],['bact-shala war', 'big conflict', goodDate(1302, 5, 08), goodDate(1320, 0, 02)],['sholtercrest war', 'big conflict', goodDate(1302, 5, 08), goodDate(1320, 0, 02)]]);
 
   chart.draw(dataTable);
   google.visualization.events.addListener(chart, "select", goEvent);
@@ -73,7 +73,7 @@ function goEvent() {
 </tr>
 <tr>
     <td><b>end:</b></td>
-    <td>coldeve 1, 1000 RR</td>
+    <td>coldeve 1, 1000 PR</td>
 </tr>
 </table>
 <p>Jimsanus is a pretty shitty place.</p>
