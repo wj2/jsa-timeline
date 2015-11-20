@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jimsucksanus timeline</title>
+<link rel="stylesheet" href="/jsa-timeline/css/o.css" type="text/css">
+</head>
+
 <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization',
        'version':'1','packages':['timeline']}]}"></script>
 <script type="text/javascript">
@@ -13,15 +21,21 @@ function drawChart() {
   dataTable.addColumn({ type: 'string', id: 'Name' });
   dataTable.addColumn({ type: 'date', id: 'Start' });
   dataTable.addColumn({ type: 'date', id: 'End' });
-  dataTable.addRows([['bact-shala war', 'border conflict', new Date(302, 9, 10), new Date(307, 9, 20)],['keldum war', 'border conflict', new Date(302, 9, 10), new Date(307, 9, 20)],['bact-shala war', 'big conflict', new Date(302, 5, 08), new Date(320, 0, 02)],['sholtercrest war', 'big conflict', new Date(302, 5, 08), new Date(320, 0, 02)]]);
+  dataTable.addRows([['greater sholtercrest government', 'reign of king byron iv', goodDate(125, 9, 23), goodDate(173, 11, 16)],['bact-shala war', 'border conflict', goodDate(302, 9, 10), goodDate(307, 9, 20)],['keldum war', 'border conflict', goodDate(302, 9, 10), goodDate(307, 9, 20)],['bact-shala war', 'big conflict', goodDate(302, 5, 08), goodDate(320, 0, 02)],['sholtercrest war', 'big conflict', goodDate(302, 5, 08), goodDate(320, 0, 02)]]);
 
   chart.draw(dataTable);
   google.visualization.events.addListener(chart, "select", goEvent);
   window.chart = chart;
 }
 
+function goodDate(year, month, day) {
+  var d = new Date(year, month, day);
+  d.setFullYear(year);
+  return d
+}
+
 function goEvent() {
-  linklist = ['tl_site/war1.html', 'tl_site/war1.html', 'tl_site/war2.html', 'tl_site/war2.html', 'tl_site/war2.html', 'tl_site/war2.html'];
+  linklist = ['events/reign-byron-iv.html', 'events/war1.html', 'events/war1.html', 'events/war1.html', 'events/war2.html', 'events/war2.html', 'events/war2.html', 'events/war2.html', 'events/war2.html'];
   var selection = window.chart.getSelection();
   link = linklist[selection[0].row];
   window.location.href = link;
@@ -30,3 +44,42 @@ function goEvent() {
 
 <div id="timeline" style="height: 200px;"></div>
 
+
+
+<body>
+
+<header class="head">
+<nav>
+  <ul>
+    <li><a href="/jsa-timeline/index.html">timeline</a></li>
+  </ul>
+</nav>
+</header>
+
+<article class="event">
+<h2>timeline of jimsanus</h2>
+<table>
+<tr>
+    <td><b>type:</b></td>
+    <td>history</td>
+</tr>
+<tr>
+    <td><b>nations:</b></td>
+    <td>many</td>
+</tr>
+<tr>
+    <td><b>start:</b></td>
+    <td>coleve 1, -1000000 RR</td>
+</tr>
+<tr>
+    <td><b>end:</b></td>
+    <td>coleve 1, 1000 RR</td>
+</tr>
+</table>
+<p>Jimsanus is a pretty shitty place.</p>
+
+</article>
+
+</body>
+
+</html>

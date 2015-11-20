@@ -1,0 +1,46 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin-left: 10%;
+    margin-right: 30%;
+}
+
+/* HEADER STYLE */
+header.head ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding-top: 6px;
+    padding-bottom: 50px;
+}
+
+header.head li {
+    display: inline;
+    float: left;
+}
+
+header.head a:link,
+header.head a:visited {
+    display: block;
+    font-weight: bold;
+    width: 100px;
+    color: black;
+    background-color: white;
+    text-align: center;
+    text-decoration: none;
+    padding-top: 6px;
+    padding-bottom: 6px;
+
+}
+
+header.head a:hover,
+header.head a:active {
+    background-color: #0099FF; 
+}
+
+table.beginsection {
+    width: 100%;
+}
+
+table {
+    border-spacing: 20px 0;
+}

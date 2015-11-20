@@ -20,6 +20,12 @@ function drawChart() {
   window.chart = chart;
 }
 
+function goodDate(year, month, day) {
+  var d = new Date(year, month, day);
+  d.setFullYear(year);
+  return d
+}
+
 function goEvent() {
   linklist = $event_links;
   var selection = window.chart.getSelection();

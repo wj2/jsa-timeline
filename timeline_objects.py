@@ -6,7 +6,11 @@ from string import Template
 
 tt_path = 'timeline_template.html'
 timeline_template = Template(open(tt_path, 'rb').read())
-month_names = ['coleve', 'snowreap', 'wintersebb', 'morningthaw', 'solclaim',
+
+ed_path = 'event_display_template.html'
+event_display_template = Template(open(ed_path, 'rb').read())
+
+month_names = ['coldeve', 'snowreap', 'wintersebb', 'morningthaw', 'solclaim',
                'feedsow', 'leafdawning', 'verdanture', 'thistledown', 
                'harvestgain', 'leaffall', 'frostfall']
 month_numbers = xrange(0, 12)
@@ -25,21 +29,32 @@ def convert_date(date):
         month = month - 1
     except ValueError:
         month = months[month]
-    print month, date, year
     return month, date, year
 
 def make_js_date(month, date, year):
-    date = 'new Date({}, {}, {})'.format(year, month, date)
+    date = 'goodDate({}, {}, {})'.format(year, 
+                                         month, 
+                                         date,
+                                         year)
     return date
+    
+def make_event_date(date):
+    month, date, year = split_and_strip(date, ' ', stripd=',')
+    try:
+        month = int(month)
+        month = months[month - 1]
+    except ValueError:
+        pass
+    return '{} {}, {}'.format(month, date, year)
 
 class Event(object):
 
-    def __init__(self, path, headersymbol='#'):
+    def __init__(self, path, headersymbol='%%'):
         f = open(path, 'rb')
         descript = ''
         for i, line in enumerate(f.readlines()):
-            if line[0] == headersymbol:
-                param, val = split_and_strip(line[1:], ':')
+            if line[:len(headersymbol)] == headersymbol:
+                param, val = split_and_strip(line[len(headersymbol):], ':')
                 setattr(self, param.lower().strip('\n'), 
                         val.lower().strip('\n'))
             else:
@@ -50,21 +65,24 @@ class Event(object):
         self.html_path = loc + '.html'
 
     def get_html(self):
-        rae_ev = ('#{}\n'
-                  '*type:* {}\n'
-                  '*nations:* {}\n'
-                  '*start:* {}\n'
-                  '*end:* {}\n'
-                  '\n'
-                  '{}\n')
-        full_ev = rae_ev.format(self.name,
-                                self.type,
-                                self.nations,
-                                self.start,
-                                self.end, 
-                                self.description)
-        html_ev = mkd.markdown(full_ev)
-        return html_ev
+        try: 
+            t_fold = self.timeline
+        except AttributeError:
+            pretitle = ''
+        else:
+            t = Timeline(t_fold)
+            pretitle = t.get_html()
+        desc = mkd.markdown(self.description)
+        e_start = make_event_date(self.start)
+        e_end = make_event_date(self.end)
+        full_html = event_display_template.substitute(pretitle=pretitle,
+                                                      title=self.name,
+                                                      type=self.type,
+                                                      nations=self.nations,
+                                                      start=e_start,
+                                                      end=e_end,
+                                                      description=desc)
+        return full_html
 
     def save_html(self, path=None):
         if path is not None:
@@ -86,13 +104,14 @@ class Event(object):
         ed = convert_date(self.end)
         js_end = make_js_date(*ed)
         for c in categs:
+            # entr = entr_ev.format(c, self.name, js_start, js_end)
             entr = entr_ev.format(c, self.name, js_start, js_end)
             entries.append(entr)
         return entries
         
 class Timeline(object):
 
-    def __init__(self, source_folder, eventpatt='.*\.md$', html_name='index'):
+    def __init__(self, source_folder, eventpatt='.*\.txt$', html_name='index'):
         event_files = os.listdir(source_folder)
         event_files = filter(lambda x: re.match(eventpatt, x) is not None, 
                              event_files)
