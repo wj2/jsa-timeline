@@ -35,6 +35,15 @@ def convert_date(date):
 def make_js_date(month, date, year):
     date = 'new Date({}, {}, {})'.format(year, month, date)
     return date
+    
+def make_event_date(date):
+    month, date, year = split_and_strip(date, ' ', stripd=',')
+    try:
+        month = int(month)
+        month = months[month - 1]
+    except ValueError:
+        pass
+    return '{} {}, {}'.format(month, date, year)
 
 class Event(object):
 
@@ -54,22 +63,15 @@ class Event(object):
         self.html_path = loc + '.html'
 
     def get_html(self):
-        rae_ev = ('##{}\n'
-                  '---|---|---'
-                  '|**type:** {}|\n'
-                  '|**nations:** {}|\n'
-                  '|**start:** {}|\n'
-                  '|**end:** {}|\n'
-                  '\n'
-                  '{}\n')
-        full_ev = rae_ev.format(self.name,
-                                self.type,
-                                self.nations,
-                                self.start,
-                                self.end, 
-                                self.description)
-        html_ev = mkd.markdown(full_ev)
-        full_html = event_display_template.substitute(event=html_ev)
+        desc = mkd.markdown(self.description)
+        e_start = make_event_date(self.start)
+        e_end = make_event_date(self.end)
+        full_html = event_display_template.substitute(title=self.name,
+                                                      type=self.type,
+                                                      nations=self.nations,
+                                                      start=e_start,
+                                                      end=e_end,
+                                                      description=desc)
         return full_html
 
     def save_html(self, path=None):
