@@ -14,7 +14,7 @@ Timelines, in turn, have events.
 Events are derived from text files with, at minimum, parameters give alone
 on a line in the form:
 
-    %% \<param\>: \<value\>
+    %% <param>: <value>
 
 Necessary parameters are:
 * Name -- name of the event, shown on the timeline and as the title of the event
