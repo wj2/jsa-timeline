@@ -10,7 +10,7 @@ timeline_template = Template(open(tt_path, 'rb').read())
 ed_path = 'event_display_template.html'
 event_display_template = Template(open(ed_path, 'rb').read())
 
-month_names = ['coleve', 'snowreap', 'wintersebb', 'morningthaw', 'solclaim',
+month_names = ['coldeve', 'snowreap', 'wintersebb', 'morningthaw', 'solclaim',
                'feedsow', 'leafdawning', 'verdanture', 'thistledown', 
                'harvestgain', 'leaffall', 'frostfall']
 month_numbers = xrange(0, 12)
@@ -65,10 +65,18 @@ class Event(object):
         self.html_path = loc + '.html'
 
     def get_html(self):
+        try: 
+            t_fold = self.timeline
+        except AttributeError:
+            pretitle = ''
+        else:
+            t = Timeline(t_fold)
+            pretitle = t.get_html()
         desc = mkd.markdown(self.description)
         e_start = make_event_date(self.start)
         e_end = make_event_date(self.end)
-        full_html = event_display_template.substitute(title=self.name,
+        full_html = event_display_template.substitute(pretitle=pretitle,
+                                                      title=self.name,
                                                       type=self.type,
                                                       nations=self.nations,
                                                       start=e_start,
