@@ -21,7 +21,7 @@ function drawChart() {
   dataTable.addColumn({ type: 'string', id: 'Name' });
   dataTable.addColumn({ type: 'date', id: 'Start' });
   dataTable.addColumn({ type: 'date', id: 'End' });
-  dataTable.addRows([['greater sholtercrest government', 'reign of king byron iv', goodDate(1035, 9, 23), goodDate(1073, 11, 16)],['greater sholtercrest government', 'reign of king byron iii', goodDate(998, 0, 5), goodDate(1035, 9, 22)],['bact-shala war', 'border conflict', goodDate(302, 9, 10), goodDate(307, 9, 20)],['keldum war', 'border conflict', goodDate(302, 9, 10), goodDate(307, 9, 20)],['bact-shala war', 'big conflict', goodDate(302, 5, 08), goodDate(320, 0, 02)],['sholtercrest war', 'big conflict', goodDate(302, 5, 08), goodDate(320, 0, 02)]]);
+  dataTable.addRows([['lesser sholtercrest misc', 'the great potato famine', goodDate(1022, 0, 25), goodDate(1024, 4, 24)],['lesser sholtercrest misc', 'the great potato glut', goodDate(1024, 4, 24), goodDate(1025, 4, 24)]]);
 
   chart.draw(dataTable);
   google.visualization.events.addListener(chart, "select", goEvent);
@@ -35,7 +35,7 @@ function goodDate(year, month, day) {
 }
 
 function goEvent() {
-  linklist = ['events/reign-byron-iv_0.html', 'events/reign-byron-iv_1.html', 'events/reign-byron-iv_1.html', 'events/war1_0.html', 'events/war1_0.html', 'events/war1_0.html', 'events/war1_0.html', 'events/war2_0.html', 'events/war2_0.html', 'events/war2_0.html', 'events/war2_0.html', 'events/war2_0.html', 'events/war2_0.html'];
+  linklist = ['reign-byron-iv_0_0.html', 'reign-byron-iv_0_1.html', 'reign-byron-iv_0_1.html'];
   var selection = window.chart.getSelection();
   link = linklist[selection[0].row];
   window.location.href = link;
@@ -57,26 +57,30 @@ function goEvent() {
 </header>
 
 <article class="event">
-<h2>timeline of jimsanus</h2>
+<h2>reign of king byron iv</h2>
 <table>
 <tr>
     <td><b>type:</b></td>
-    <td>history</td>
+    <td>government</td>
 </tr>
 <tr>
     <td><b>nations:</b></td>
-    <td>many</td>
+    <td>greater sholtercrest</td>
 </tr>
 <tr>
     <td><b>start:</b></td>
-    <td>coldeve 1, -1000000 RR</td>
+    <td>harvestgain 23, 1035 RR</td>
 </tr>
 <tr>
     <td><b>end:</b></td>
-    <td>coldeve 1, 1000 RR</td>
+    <td>frostfall 16, 1073 RR</td>
 </tr>
 </table>
-<p>Jimsanus is a pretty shitty place.</p>
+<p>Byron IV's reign was short for some and long for others. 
+The fact most noted by history is that his death lead with some directness
+toward the succession struggle now termed <a href="https://docs.google.com/document/d/1xCAzZadyyspk4Sl0WLGpu9kZdYYcX2eV36ipV2frbuQ/edit#heading=h.emw23ue39ay7">the Indigo and Violet War</a>
+While Byron himself certainly had nothing to do with those most unfortunate 
+happenings, his lack of clarity about his intended heir contributed.</p>
 
 </article>
 
